@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: node-app-cronjob
+  namespace: node-app
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: node-app-cronjob
+            image: alpine
+            command: ["echo", "This is CronJob in Kubernetes"]
+          restartPolicy: Never

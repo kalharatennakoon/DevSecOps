@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: node-app-job
+  namespace: node-app
+spec:
+  #activeDeadlineSeconds: 15
+  #backoffLimit: 2
+  completions: 2
+  parallelism: 2
+  template:
+    spec:
+      containers:
+      - name: node-app-job
+        image: alpine   #your docker image
+        # command: ["echo", "Welcome to my Node app"]
+        command: ["ls"]
+      restartPolicy: Never
